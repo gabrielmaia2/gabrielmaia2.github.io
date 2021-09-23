@@ -61,3 +61,49 @@ a:active {
 h1.title {
   font-size: 3em;
 }
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.content-wrapper .item {
+  box-sizing: border-box;
+  padding: 80px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content-wrapper .item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.content-wrapper .item .content {
+  position: relative;
+  padding: 30px;
+  box-sizing: border-box;
+  font-size: 1.4em;
+  width: 40%;
+  background-color: rgb(31, 31, 102);
+  box-shadow: 0.6rem 0.6rem 1em black;
+}
+
+.content-wrapper .item .content p {
+  margin: 0;
+  margin-bottom: 0.5em;
+}
+
+.content-wrapper .item .content .title {
+  padding: 0 0 20px 0;
+  box-sizing: border-box;
+  font-size: 1.6em;
+}
+
+.content-wrapper .item .preview {
+  position: relative;
+  width: 40%;
+  box-shadow: 0.6rem 0.6rem 1em black;
+}
