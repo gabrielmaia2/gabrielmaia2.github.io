@@ -87,8 +87,6 @@ h1.title {
   box-sizing: border-box;
   font-size: 1.4em;
   width: 40%;
-  background-color: rgb(31, 31, 102);
-  box-shadow: 0.6rem 0.6rem 1em black;
 }
 
 .content-wrapper .item .content p {
@@ -105,5 +103,60 @@ h1.title {
 .content-wrapper .item .preview {
   position: relative;
   width: 40%;
-  box-shadow: 0.6rem 0.6rem 1em black;
+}
+
+.content-wrapper .item > * {
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.content-wrapper .item .content.view {
+  animation-name: fade-in;
+}
+
+.content-wrapper .item .preview.view {
+  animation-name: fade-in-2;
+}
+
+.content-wrapper .item:nth-child(odd) .content.view {
+  animation-name: fade-in-2;
+}
+
+.content-wrapper .item:nth-child(odd) .preview.view {
+  animation-name: fade-in;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    left: -50vw;
+  }
+  40% {
+    opacity: 100%;
+    background-color: rgb(68, 114, 206);
+    box-shadow: 0 0 0 black;
+    left: 0vw;
+  }
+  100% {
+    background-color: rgb(31, 31, 102);
+    box-shadow: 0.6rem 0.6rem 1em black;
+  }
+}
+
+@keyframes fade-in-2 {
+  0% {
+    opacity: 0;
+    left: -7vw;
+  }
+  40% {
+    opacity: 100%;
+    background-color: rgb(68, 114, 206);
+    box-shadow: 0 0 0 black;
+    left: 0vw;
+  }
+  100% {
+    background-color: rgb(31, 31, 102);
+    box-shadow: 0.6rem 0.6rem 1em black;
+  }
 }
