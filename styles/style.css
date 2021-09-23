@@ -129,7 +129,9 @@ h1.title {
 
 @keyframes fade-in {
   0% {
-    opacity: 0;
+    opacity: 0%;
+    background-color: rgb(68, 114, 206);
+    box-shadow: 0 0 0 black;
     left: -50vw;
   }
   40% {
@@ -146,7 +148,9 @@ h1.title {
 
 @keyframes fade-in-2 {
   0% {
-    opacity: 0;
+    opacity: 0%;
+    background-color: rgb(68, 114, 206);
+    box-shadow: 0 0 0 black;
     left: -7vw;
   }
   40% {
