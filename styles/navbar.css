@@ -34,3 +34,12 @@ html {
   color: white !important;
 }
 
+@media print {
+  html {
+    margin: 0;
+  }
+
+  .nav-bar {
+    display: none;
+  }
+}
