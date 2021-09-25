@@ -12,27 +12,6 @@ function docReady(fn) {
     }
 }
 
-docReady(function () {
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      // Checks for each item in items view and sets/removes view class
-      // to change css when the items are in viewport or hidden
-
-      const item = entry.target.querySelectorAll('.content, .preview');
-
-      if (entry.isIntersecting) {
-        item.forEach(e => e.classList.add('view'));
-        return;
-      }
-
-      item.forEach(e => e.classList.remove('view'));
-    });
-  });
-
-  // Creates observers for each item in items view
-  document.querySelectorAll('.content-wrapper .item').forEach(e => observer.observe(e));
-});
-
 /**
  * Replaces all properties in the document that mactch the format ${property}
  * with the specified value using appendInfo({ property: value }).
@@ -68,6 +47,30 @@ function appendProperties(properties) {
   }
 }
 
+// All other docReady calls must be after this one
+// because it replaces the whole DOM content and
+// any operations done on the older elements will have no effect on the new ones
 docReady(replaceProperties);
+
+docReady(function () {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      // Checks for each item in items view and sets/removes view class
+      // to change css when the items are in viewport or hidden
+
+      const item = entry.target.querySelectorAll('.content, .preview');
+
+      if (entry.isIntersecting) {
+        item.forEach(e => e.classList.add('view'));
+        return;
+      }
+
+      item.forEach(e => e.classList.remove('view'));
+    });
+  });
+
+  // Creates observers for each item in items view
+  document.querySelectorAll('.content-wrapper .item').forEach(e => observer.observe(e));
+});
 
 document.info = {};
