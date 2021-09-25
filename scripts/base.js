@@ -1,4 +1,7 @@
-// Runs fn only if document is loaded
+/**
+ * Runs function only when document is loaded.
+ * @param {function} fn Function to run.
+ */
 function docReady(fn) {
     // see if DOM is already available
     if (document.readyState === "complete" || document.readyState === "interactive") {
@@ -12,6 +15,9 @@ function docReady(fn) {
 docReady(function () {
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
+      // Checks for each item in items view and sets/removes view class
+      // to change css when the items are in viewport or hidden
+
       const item = entry.target.querySelectorAll('.content, .preview');
 
       if (entry.isIntersecting) {
@@ -23,6 +29,7 @@ docReady(function () {
     });
   });
 
+  // Creates observers for each item in items view
   document.querySelectorAll('.content-wrapper .item').forEach(e => observer.observe(e));
 });
 
