@@ -1,4 +1,4 @@
-docReady(function () {
+docReady(() => {
   var birthDate = new Date('1999-10-29');
 
   var birthEl = document.getElementById("birth-date");
