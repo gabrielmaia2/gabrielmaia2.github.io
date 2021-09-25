@@ -1,11 +1,23 @@
-docReady(() => {
-  var birthDate = new Date('1999-10-29');
+/**
+ * Returns age from birth date.
+ * @param {string} dateString Birth date to get string from.
+ * @returns Age in years.
+ */
+function getAge(dateString) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
 
-  var birthEl = document.getElementById("birth-date");
+var birthDate = new Date('1999-10-29');
+birthDate.setUTCHours(3);
 
-  // fixing pt-br locale (UTC-3)
-  birthDate.setUTCHours(birthDate.getUTCHours() + 3);
-
-  birthString = `Nascido em ${birthDate.toLocaleDateString('pt-BR')} (${getAge(birthDate)} anos)`;
-  birthEl.textContent = birthString;
+appendProperties({
+  birthDate: birthDate.toLocaleDateString('pt-BR'),
+  age: getAge(birthDate),
 });
