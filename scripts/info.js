@@ -18,6 +18,7 @@ var birthDate = new Date('1999-10-29');
 birthDate.setUTCHours(3);
 
 appendProperties({
-  birthDate: birthDate.toLocaleDateString('pt-BR'),
+  birthDateBr: birthDate.toLocaleDateString('pt-BR'),
+  birthDateEn: birthDate.toLocaleDateString('en-US'),
   age: getAge(birthDate),
 });
