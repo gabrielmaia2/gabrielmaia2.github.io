@@ -71,6 +71,10 @@ a:active {
   font-size: 1.6em;
 }
 
+.subtitle {
+  font-size: 1.25em;
+}
+
 h1.title {
   font-size: 3em;
 }
