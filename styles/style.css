@@ -118,12 +118,13 @@ h1.title {
 
 .content-wrapper .item .content:only-child {
   width: 60%;
-  margin-left: 40%;
+  margin-left: 5%;
+  margin-right: 35%;
 }
 
 .content-wrapper .item:nth-child(odd) .content:only-child {
-  margin-left: 0%;
-  margin-right: 40%;
+  margin-right: 5%;
+  margin-left: 35%;
 }
 
 .content-wrapper .item .content p {
