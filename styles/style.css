@@ -67,6 +67,10 @@ a:active {
   flex-direction: row;
 }
 
+.title {
+  font-size: 1.6em;
+}
+
 h1.title {
   font-size: 3em;
 }
@@ -116,7 +120,6 @@ h1.title {
 .content-wrapper .item .content .title {
   padding: 0 0 20px 0;
   box-sizing: border-box;
-  font-size: 1.6em;
 }
 
 .content-wrapper .item .preview {
