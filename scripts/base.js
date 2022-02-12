@@ -58,7 +58,7 @@ docReady(function () {
       // Checks for each item in items view and sets/removes view class
       // to change css when the items are in viewport or hidden
 
-      const item = entry.target.querySelectorAll('.content, .preview');
+      const item = entry.target.querySelectorAll('.content, .preview-wrapper');
 
       if (entry.isIntersecting) {
         item.forEach(e => e.classList.add('view'));
