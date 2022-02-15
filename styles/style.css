@@ -39,6 +39,16 @@ a:active {
   color: unset;
 }
 
+.padding-40 {
+  padding: 40px;
+}
+
+.fit-parent {
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 100%;
+}
+
 .center-margin {
   margin-left: auto;
   margin-right: auto;
@@ -108,9 +118,6 @@ h1.title {
 
 .content-wrapper .item .content {
   position: relative;
-  padding: 30px;
-  box-sizing: border-box;
-  font-size: 1.4em;
   width: 40%;
   margin: auto;
 }
@@ -147,13 +154,6 @@ h1.title {
   position: relative;
   max-width: 100%;
   max-height: 30vw;
-}
-
-.content-wrapper .item .preview > * {
-  box-sizing: border-box;
-  padding: 40px;
-  max-width: 100%;
-  max-height: 100%;
 }
 
 .content-wrapper .item > * {
