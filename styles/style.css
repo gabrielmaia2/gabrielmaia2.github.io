@@ -1,5 +1,5 @@
 html {
-  background-color: rgb(68, 114, 206);
+  background-color: rgb(97, 147, 247);
   color: white;
 }
 
@@ -82,7 +82,7 @@ h1.title {
 .content {
   box-sizing: border-box;
   padding: 30px;
-  background-color: rgb(31, 31, 102);
+  background-color: rgb(27, 47, 85);
   font-size: 1.4em;
   width: 60%;
 }
@@ -228,6 +228,6 @@ h1.title {
     background-color: rgba(68, 114, 206, 0);
   }
   100% {
-    background-color: rgb(31, 31, 102);
+    background-color: rgb(27, 47, 85);
   }
 }
