@@ -101,7 +101,7 @@ body {
 }
 
 @media print {
-  .content {
+  .nobreak {
     break-inside: avoid;
   }
 }
