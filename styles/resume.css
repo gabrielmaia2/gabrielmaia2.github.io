@@ -15,7 +15,7 @@ body {
 #header {
   display: flex;
   margin: 0;
-  padding: 2em;
+  padding: 1em 2em;
 }
 
 .title-info {
@@ -50,7 +50,7 @@ body {
 }
 
 #content {
-  padding: 2em;
+  padding: 1em 2em;
   display: flex;
 }
 
@@ -69,7 +69,7 @@ body {
 
 .section > .title {
   font-weight: 600;
-  color: #2079c7;
+  color: #000000;
   text-transform: uppercase;
   font-family: "Open Sans", sans-serif;
   padding: 1em 0;
