@@ -10,7 +10,7 @@ html {
   width: 100%;
   padding: 0px 20px;
   display: flex;
-  background-color: rgb(27, 47, 85);
+  background-color: rgb(19, 22, 27);
   box-shadow: 0.1rem 0.1rem 0.3em black;
 }
 
@@ -19,7 +19,7 @@ html {
   text-align: center;
   line-height: 1.5rem;
   vertical-align: middle;
-  background-color: rgb(27, 47, 85);
+  background-color: rgb(19, 22, 27);
   padding: 15px 20px;
   padding-top: 12px;
 
@@ -27,7 +27,7 @@ html {
 }
 
 .nav-bar a:hover {
-  background-color: rgb(39, 68, 121);
+  background-color: rgb(37, 42, 51);
 }
 
 .nav-bar a {
