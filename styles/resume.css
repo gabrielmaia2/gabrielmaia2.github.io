@@ -79,6 +79,7 @@ body {
   color: #666666;
   font-weight: 400;
   font-family: "Merriweather", serif;
+  text-align: justify;
 }
 
 .section .content .title {
