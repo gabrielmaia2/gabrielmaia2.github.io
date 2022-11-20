@@ -15,6 +15,8 @@
     <meta property="og:description" content="" />
     <meta property="og:url" content="https://gabrielmaia2.github.io/" />
     <meta property="og:title" content="Resume (EN) - Gabriel Maia" />
+    <script src="scripts/privateinfo.default.js"></script>
+    <script src="scripts/privateinfo.js"></script>
     <script src="scripts/base.js"></script>
     <script src="scripts/info.js"></script>
   </head>
@@ -42,7 +44,8 @@
       <div class="personal-info">
         <div>Born on ${birthDateEn} (${age} years).</div>
         <div id="address">Barreira, CE, Brazil.</div>
-        <div id="email">gabmaia007@gmail.com</div>
+        <a id="email" href="mailto:${emailAddress}">${emailAddress}</a>
+        ${phoneNumberHtmlEn}
         <p>
           LinkedIn:
           <a href="https://www.linkedin.com/in/gabriel-maia-gondim-0a7646169/">
