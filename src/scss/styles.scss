@@ -1,0 +1,39 @@
+@use "sass:math";
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap");
+
+$navbar-height: math.max(
+  $nav-link-height + $navbar-padding-y * 2,
+  $navbar-brand-height + $navbar-padding-y * 2
+);
+
+$color-background-primary: rgb(45, 53, 68);
+$color-background-secondary: rgb(19, 22, 27);
+$color-text: #fff;
+
+@mixin shadowBold() {
+  box-shadow: 0 0 0.3em 0.1rem black;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  background-color: $color-background-primary !important;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  color: #ff5085;
+}
