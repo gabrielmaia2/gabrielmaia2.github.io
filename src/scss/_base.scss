@@ -1,0 +1,77 @@
+@use "sass:math";
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/maps";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+$navbar-height: math.max(
+  $nav-link-height + $navbar-padding-y * 2,
+  $navbar-brand-height + $navbar-padding-y * 2
+);
+
+$utilities: map-merge(
+  $utilities,
+  (
+    "shadow":
+      map-merge(
+        map-get($utilities, "shadow"),
+        (
+          values:
+            map-merge(
+              map-get(map-get($utilities, "shadow"), "values"),
+              (
+                bold-sm: 0 0 0.3em 0.1rem black,
+                bold: 0 0 0.45em 0.15rem black,
+                bold-lg: 0 0 0.6em 0.2rem black,
+              )
+            ),
+        )
+      ),
+  )
+);
+
+@for $i from 1 through 9 {
+  .fs-0#{$i}em {
+    font-size: #{"0.#{$i}em"};
+  }
+}
+
+@mixin create-sizing($s, $v, $side, $val) {
+  .m#{$s}-#{$v}s {
+    margin#{$side}: ($spacer * $val) !important;
+  }
+  .p#{$s}-#{$v}s {
+    padding#{$side}: ($spacer * $val) !important;
+  }
+}
+
+@mixin create-sizings($v, $val) {
+  @include create-sizing("t", $v, "-top", $val);
+  @include create-sizing("b", $v, "-bottom", $val);
+  @include create-sizing("s", $v, "-left", $val);
+  @include create-sizing("e", $v, "-right", $val);
+  @include create-sizing("x", $v, "-left", $val);
+  @include create-sizing("x", $v, "-right", $val);
+  @include create-sizing("y", $v, "-top", $val);
+  @include create-sizing("y", $v, "-bottom", $val);
+  @include create-sizing("", $v, "", $val);
+}
+
+@mixin create-all-sizings() {
+  @for $i from 0 through 10 {
+    @include create-sizings("0#{$i}", $i / 10);
+  }
+  @for $i from 1 through 10 {
+    $step: 10 + $i * 2;
+    @include create-sizings("#{$step}", $step / 10);
+  }
+}
+
+@include create-all-sizings();
+
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+@import "../extensions/bootstrap-extension-5.3.0/css/bootstrap-extension.min";
+@import "https://fonts.googleapis.com/css2?family=Open+Sans&display=swap";

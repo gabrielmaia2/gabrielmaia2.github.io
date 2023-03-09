@@ -3,9 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.scss";
 import Home from "./routes/Home";
+import "bootstrap";
 import reportWebVitals from "./reportWebVitals";
 import Error from "./routes/Error";
 import Resume from "./routes/Resume/Resume";
+import "./scss/styles.scss";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +34,9 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div data-bs-theme="dark">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>
 );
 
