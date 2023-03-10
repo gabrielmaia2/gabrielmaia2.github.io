@@ -6,6 +6,7 @@ import reportWebVitals from "./reportWebVitals";
 import Home from "./routes/Home";
 import Error from "./routes/Error";
 import About from "./routes/About";
+import Projects from "./routes/Projects";
 import "./scss/styles.scss";
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/about",
     element: <About />,
+  },
+  {
+    path: "/projects",
+    element: <Projects />,
   },
 ]);
 
