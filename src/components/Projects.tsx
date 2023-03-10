@@ -9,10 +9,10 @@ import ProjectType from "../types/Project";
 const SwiperWrapper = styled.div`
   mask-image: linear-gradient(
     90deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(255, 255, 255, 1) 10%,
-    rgba(255, 255, 255, 1) 90%,
-    rgba(0, 0, 0, 0) 100%
+    rgba(0, 0, 0, 0) 5%,
+    rgba(255, 255, 255, 1) 15%,
+    rgba(255, 255, 255, 1) 85%,
+    rgba(0, 0, 0, 0) 95%
   );
 `;
 
@@ -50,19 +50,14 @@ export default function Projects({
         modules={[Pagination, Virtual, Keyboard, A11y]}
         spaceBetween={0}
         slidesPerView={3}
-        centeredSlides
         grabCursor
         loop
-        freeMode
-        keyboard={{ enabled: true, onlyInViewport: false }}
         pagination={{
           el: `${PaginationChild}`,
           clickable: true,
           dynamicBullets: true,
           dynamicMainBullets: 3,
         }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
       >
         {projectsJSX}
         <PaginationStyled>

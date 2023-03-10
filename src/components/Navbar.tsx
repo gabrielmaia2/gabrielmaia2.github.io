@@ -13,7 +13,7 @@ export default function Navbar() {
       <NavbarBs.Collapse id="responsive-navbar-nav">
         <Nav>
           <NavbarLink href="/">Home</NavbarLink>
-          <NavbarLink href="/about">About me</NavbarLink>
+          {/* <NavbarLink href="/about">About me</NavbarLink> */}
           <NavbarLink href="/projects">Projects</NavbarLink>
           <NavDropdown title="Resume">
             <NavDropdown.Item href="https://docs.google.com/document/d/1Immakb-vaPLkAzgL3AG0J4PgXJzN1Zlqx2QLAvdk4ik/edit?usp=sharing">

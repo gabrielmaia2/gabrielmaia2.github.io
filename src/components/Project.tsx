@@ -25,6 +25,8 @@ const ProjectComp = styled.div.attrs({
   width: 100%;
   position: relative;
   overflow: hidden;
+  filter: drop-shadow(0 0 0.1em #000000c3);
+  transition: filter ${transitionTime};
 
   ${Description} {
     bottom: ${({ detailsHeight: height }) => -height}px;
@@ -38,15 +40,15 @@ const ProjectComp = styled.div.attrs({
   }
 
   &:hover {
+    filter: drop-shadow(0 0 0.3em #000000c3);
+
     ${Description} {
       bottom: 0px;
       background-color: ${bgHover};
-      transition: background-color ${transitionTime}, bottom ${transitionTime};
     }
 
     ${Preview}, ${NoPreview} {
       background-color: ${bgHover};
-      transition: background-color ${transitionTime};
     }
   }
 `;

@@ -12,8 +12,7 @@ export default function Projects() {
   return (
     <div>
       <Navbar />
-      <h1 className="m-4 text-center">Projects</h1>
-      <p className="text-center">Here are some of my projects:</p>
+      <h1 className="m-4 text-center">My projects</h1>
       <br />
       <ProjectsWrapper>
         <ProjectsComp projects={projects} />
