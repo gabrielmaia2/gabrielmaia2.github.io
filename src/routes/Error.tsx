@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 export default function Error() {
   const error: any = useRouteError();
@@ -8,7 +8,7 @@ export default function Error() {
 
   return (
     <div className="text-center">
-      <NavBar />
+      <Navbar />
       <h1 className="m-4">An unexpected error has occurred.</h1>
       <h4>
         Error:{" "}

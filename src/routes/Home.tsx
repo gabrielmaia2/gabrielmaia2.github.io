@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "../components/NavBar";
+import Navbar from "../components/Navbar";
 
 export default function Home() {
   return (
-    <div className="text-center">
-      <NavBar />
-      <h1 className="m-4">Home</h1>
+    <div className="">
+      <Navbar />
+      <h1 className="m-4 text-center">Home</h1>
     </div>
   );
 }

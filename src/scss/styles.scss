@@ -34,6 +34,73 @@ code {
   }
 }
 
+// Navbar style
+.navbar {
+  @extend .px-3, .shadow-bold;
+  background-color: v.$color-background-secondary;
+
+  .navbar-brand {
+    @extend .text-light;
+  }
+
+  .dropdown-menu {
+    @extend .p-0, .rounded-0, .border-0, .shadow;
+    background-color: v.$color-background-tertiary;
+  }
+
+  .nav-link,
+  .dropdown-item {
+    @extend .link, .p-08s, .text-light;
+
+    &[aria-current="page"] {
+      @extend .fw-bold;
+    }
+  }
+
+  .dropdown-item {
+    @extend .fs-09em;
+  }
+
+  // Collapsed navbar style
+
+  .navbar-toggler {
+    @extend .border-0, .shadow-none, .link;
+  }
+
+  .navbar-collapse {
+    &.collapsing,
+    &.show {
+      .dropdown-menu {
+        @extend .shadow-none;
+      }
+    }
+  }
+}
+
+a {
+  color: #8ad0f1;
+
+  &:link {
+    color: #458c9e;
+  }
+
+  &:hover {
+    color: #8ad0f1;
+  }
+
+  &:visited {
+    color: #b4ad44;
+
+    &:hover {
+      color: #f3ed9a;
+    }
+  }
+
+  &:active {
+    color: unset;
+  }
+}
+
 @media print {
   body * {
     visibility: hidden;

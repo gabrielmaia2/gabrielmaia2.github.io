@@ -1,12 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./index.scss";
-import Home from "./routes/Home";
 import "bootstrap";
 import reportWebVitals from "./reportWebVitals";
+import Home from "./routes/Home";
 import Error from "./routes/Error";
-import Resume from "./routes/Resume/Resume";
+import About from "./routes/About";
 import "./scss/styles.scss";
 
 const router = createBrowserRouter([
@@ -16,17 +15,9 @@ const router = createBrowserRouter([
     errorElement: <Error />,
   },
   {
-    path: "/resume",
-    element: <Resume />,
+    path: "/about",
+    element: <About />,
   },
-  // {
-  //   path: "/resume-en",
-  //   element: <ResumeEN />
-  // },
-  // {
-  //   path: "/about",
-  //   element: <About />
-  // },
 ]);
 
 const root = ReactDOM.createRoot(
