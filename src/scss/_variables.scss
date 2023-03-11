@@ -1,5 +1,18 @@
+@use "sass:math";
+
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+
+$navbar-height: math.max(
+  $nav-link-height + $navbar-padding-y * 2,
+  $navbar-brand-height + $navbar-padding-y * 2
+);
+
 $color-background-primary: #2d3544;
 $color-background-secondary: #13161b;
 $color-background-tertiary: #1c2129;
 $color-foreground: #a1c2ff;
 $color-text: #fff;
+
+$body-bg: $color-background-primary;
+$body-color: $color-text;

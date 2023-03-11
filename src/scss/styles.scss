@@ -1,9 +1,4 @@
-@forward "variables";
-@use "variables" as v;
-@forward "base" with (
-  $body-bg: v.$color-background-primary,
-  $body-color: v.$color-text
-);
+@forward "base";
 @use "base";
 
 html,
@@ -26,18 +21,18 @@ code {
 .link {
   background-color: transparent;
   &:hover {
-    background-color: rgba(v.$color-foreground, 0.082);
+    background-color: rgba(base.$color-foreground, 0.082);
   }
 
   &:active {
-    background-color: rgba(v.$color-foreground, 0.2);
+    background-color: rgba(base.$color-foreground, 0.2);
   }
 }
 
 // Navbar style
 .navbar {
   @extend .px-3, .shadow-bold;
-  background-color: v.$color-background-secondary;
+  background-color: base.$color-background-secondary;
 
   .navbar-brand {
     @extend .text-light;
@@ -45,7 +40,7 @@ code {
 
   .dropdown-menu {
     @extend .p-0, .rounded-0, .border-0, .shadow;
-    background-color: v.$color-background-tertiary;
+    background-color: base.$color-background-tertiary;
   }
 
   .nav-link,

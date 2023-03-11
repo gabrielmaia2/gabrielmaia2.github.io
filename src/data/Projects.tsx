@@ -7,22 +7,6 @@ import pistoleiroPacoImg from "./images/pistoleiro-paco.png";
 import snakesLaddersImg from "./images/snakes-ladders.png";
 
 const projects: Record<string, ProjectType> = {
-  snakesLadders: {
-    name: "Snakes and Ladders",
-    imgUrl: snakesLaddersImg,
-    element: (
-      <div>
-        <p className="mb-2">
-          <a href="https://github.com/gabrielmaia2/EscadasSerpentes">
-            github.com/gabrielmaia2/EscadasSerpentes
-          </a>
-        </p>
-        <p className="m-0">
-          Snakes and Ladders game implementation using Java Swing and AWT.
-        </p>
-      </div>
-    ),
-  },
   bellApp: {
     name: "Bell",
     imgUrl: bellImg,
@@ -49,7 +33,7 @@ const projects: Record<string, ProjectType> = {
             github.com/gabrielmaia2/disciplina_web
           </a>
         </p>
-        <p>
+        <p className="mb-2">
           <a href="https://github.com/gabrielmaia2/notes-app">
             github.com/gabrielmaia2/notes-app
           </a>
@@ -104,13 +88,29 @@ const projects: Record<string, ProjectType> = {
             github.com/gabrielmaia2/CuscuzBane
           </a>
         </p>
-        <p>
+        <p className="mb-2">
           <a href="https://gabrielmaia2.itch.io/cuscuz-bane">
             gabrielmaia2.itch.io/cuscuz-bane
           </a>
         </p>
         <p className="m-0">
           A simple Unity game about a bane that came from a wrong cuscuz recipe.
+        </p>
+      </div>
+    ),
+  },
+  snakesLadders: {
+    name: "Snakes and Ladders",
+    imgUrl: snakesLaddersImg,
+    element: (
+      <div>
+        <p className="mb-2">
+          <a href="https://github.com/gabrielmaia2/EscadasSerpentes">
+            github.com/gabrielmaia2/EscadasSerpentes
+          </a>
+        </p>
+        <p className="m-0">
+          Snakes and Ladders game implementation using Java Swing and AWT.
         </p>
       </div>
     ),

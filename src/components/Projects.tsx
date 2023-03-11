@@ -1,69 +1,138 @@
-import React, { useState } from "react";
-import { Pagination, Virtual, Keyboard, A11y } from "swiper";
-import { Swiper, SwiperSlide as SwiperSlideComp } from "swiper/react";
-import styled from "styled-components";
+import React, { useState, useEffect, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
+import styled, { css } from "styled-components";
 import Project from "../components/Project";
-import "swiper/css/bundle";
 import ProjectType from "../types/Project";
+import { RxCaretLeft, RxCaretRight } from "react-icons/rx";
+import { Button } from "react-bootstrap";
 
-const SwiperWrapper = styled.div`
-  mask-image: linear-gradient(
-    90deg,
-    rgba(0, 0, 0, 0) 5%,
-    rgba(255, 255, 255, 1) 15%,
-    rgba(255, 255, 255, 1) 85%,
-    rgba(0, 0, 0, 0) 95%
-  );
+const Wrapper = styled.div.attrs({
+  className: "overflow-y-visible",
+})`
+  position: relative;
+`;
+const Carousel = styled.div.attrs({
+  className: "embia embia__viewport overflow-x-hidden",
+})`
+  height: 100%;
+`;
+const CarouselContainer = styled.div.attrs({
+  className: "embia__container d-flex flex-row",
+})``;
+
+const Slide = styled.div.attrs({
+  className: "embla__slide container-fluid p-0",
+})<{ slideSize: string }>`
+  flex: 1 0 ${({ slideSize }) => slideSize};
+  position: relative;
 `;
 
-const SwiperSlide = styled(SwiperSlideComp).attrs({
-  className: "container-fluid h-auto",
-})``;
+const buttonStyles = css`
+  position: absolute;
+  font-size: 5em;
+  color: #ffffff9b;
+  z-index: 3;
+  height: 100%;
+  padding: 0;
+  background-color: transparent !important;
+  border: 0 !important;
+`;
 
-const PaginationStyled = styled.div.attrs({
-  className: "w-100 d-flex flex-column align-items-center m-3",
-})``;
-
-const PaginationChild = styled.div`
-  transform: translateX(0%) !important;
+const PrevButton = styled(Button)`
+  ${buttonStyles}
+  left: 0;
+`;
+const NextButton = styled(Button)`
+  ${buttonStyles}
+  right: 0;
 `;
 
 export default function Projects({
   projects,
+  numSlides,
+  panelHeight,
 }: {
   projects: Record<string, ProjectType>;
+  numSlides: number;
+  panelHeight: string;
 }) {
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    axis: "x",
+    inViewThreshold: 0.1,
+    align: numSlides % 2 === 0 ? "start" : "center",
+  });
+
+  // Recomputes carousel when size changes
+  useEffect(() => {
+    emblaApi?.reInit();
+  }, [emblaApi, numSlides, panelHeight]);
+
+  // Turns other invisible
+  // useEffect(() => {
+  //   if (!emblaApi) return;
+  //   const cb = () => {
+  //     const nodes = emblaApi.slideNodes();
+
+  //     emblaApi.slidesInView().forEach((i) => {
+  //       nodes[i].style.visibility = "visible";
+  //       console.log(`visible ${i}`);
+  //     });
+  //     emblaApi.slidesNotInView().forEach((i) => {
+  //       nodes[i].style.visibility = "hidden";
+  //       console.log(`hidden ${i}`);
+  //     });
+  //   };
+
+  //   emblaApi.on("scroll", cb);
+  //   emblaApi.on("init", cb);
+  // }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    const cb = () => {
+      const nodes = emblaApi.slideNodes();
+
+      emblaApi.slidesInView().forEach((i) => {
+        nodes[i].style.visibility = "visible";
+        console.log(`visible ${i}`);
+      });
+      emblaApi.slidesNotInView().forEach((i) => {
+        nodes[i].style.visibility = "hidden";
+        console.log(`hidden ${i}`);
+      });
+    };
+
+    emblaApi.on("scroll", cb);
+    emblaApi.on("init", cb);
+  }, [emblaApi]);
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
   const projectsJSX = Object.entries(projects).map(
-    ([k, { name, imgUrl, element }]) => (
-      <SwiperSlide key={k}>
-        <Project name={name} imgUrl={imgUrl}>
-          {element}
-        </Project>
-      </SwiperSlide>
-    )
+    ([k, { name, imgUrl, element }]) => {
+      return (
+        <Slide slideSize={`${100 / numSlides}%`}>
+          <Project key={k} name={name} imgUrl={imgUrl} height={panelHeight}>
+            {element}
+          </Project>
+        </Slide>
+      );
+    }
   );
 
   return (
-    <SwiperWrapper>
-      <Swiper
-        // install Swiper modules
-        modules={[Pagination, Virtual, Keyboard, A11y]}
-        spaceBetween={0}
-        slidesPerView={3}
-        grabCursor
-        loop
-        pagination={{
-          el: `${PaginationChild}`,
-          clickable: true,
-          dynamicBullets: true,
-          dynamicMainBullets: 3,
-        }}
-      >
-        {projectsJSX}
-        <PaginationStyled>
-          <PaginationChild />
-        </PaginationStyled>
-      </Swiper>
-    </SwiperWrapper>
+    <Wrapper>
+      <PrevButton onClick={scrollPrev}>
+        <RxCaretLeft className="h-100" />
+      </PrevButton>
+      <NextButton onClick={scrollNext}>
+        <RxCaretRight className="h-100" />
+      </NextButton>
+      <Carousel ref={emblaRef}>
+        <CarouselContainer>{projectsJSX}</CarouselContainer>
+      </Carousel>
+    </Wrapper>
   );
 }

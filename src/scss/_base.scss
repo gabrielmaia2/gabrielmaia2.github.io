@@ -1,15 +1,7 @@
-@use "sass:math";
-
-@import "../../node_modules/bootstrap/scss/functions";
-@import "../../node_modules/bootstrap/scss/variables";
+@import "variables";
 @import "../../node_modules/bootstrap/scss/maps";
 @import "../../node_modules/bootstrap/scss/mixins";
 @import "../../node_modules/bootstrap/scss/utilities";
-
-$navbar-height: math.max(
-  $nav-link-height + $navbar-padding-y * 2,
-  $navbar-brand-height + $navbar-padding-y * 2
-);
 
 $utilities: map-merge(
   $utilities,
@@ -32,13 +24,29 @@ $utilities: map-merge(
   )
 );
 
-@for $i from 1 through 9 {
-  .fs-0#{$i}em {
-    font-size: #{"0.#{$i}em"};
+@mixin create-overflow($var, $value) {
+  .overflow-#{$var}-#{$value} {
+    overflow-#{$var}: #{$value};
   }
 }
 
-@mixin create-sizing($s, $v, $side, $val) {
+@mixin create-overflows() {
+  $vars: auto hidden visible scroll;
+  @each $i in $vars {
+    @include create-overflow(x, $i);
+    @include create-overflow(y, $i);
+  }
+}
+
+@mixin create-font-sizes {
+  @for $i from 1 through 9 {
+    .fs-0#{$i}em {
+      font-size: #{"0.#{$i}em"};
+    }
+  }
+}
+
+@mixin create-spacing($s, $v, $side, $val) {
   .m#{$s}-#{$v}s {
     margin#{$side}: ($spacer * $val) !important;
   }
@@ -47,29 +55,38 @@ $utilities: map-merge(
   }
 }
 
-@mixin create-sizings($v, $val) {
-  @include create-sizing("t", $v, "-top", $val);
-  @include create-sizing("b", $v, "-bottom", $val);
-  @include create-sizing("s", $v, "-left", $val);
-  @include create-sizing("e", $v, "-right", $val);
-  @include create-sizing("x", $v, "-left", $val);
-  @include create-sizing("x", $v, "-right", $val);
-  @include create-sizing("y", $v, "-top", $val);
-  @include create-sizing("y", $v, "-bottom", $val);
-  @include create-sizing("", $v, "", $val);
+@mixin create-spacings($v, $val) {
+  @include create-spacing("t", $v, "-top", $val);
+  @include create-spacing("b", $v, "-bottom", $val);
+  @include create-spacing("s", $v, "-left", $val);
+  @include create-spacing("e", $v, "-right", $val);
+  @include create-spacing("x", $v, "-left", $val);
+  @include create-spacing("x", $v, "-right", $val);
+  @include create-spacing("y", $v, "-top", $val);
+  @include create-spacing("y", $v, "-bottom", $val);
+  @include create-spacing("", $v, "", $val);
 }
 
-@mixin create-all-sizings() {
+@mixin create-all-spacings() {
+  // 0 - 10, step 1
   @for $i from 0 through 10 {
-    @include create-sizings("0#{$i}", $i / 10);
+    @include create-spacings("0#{$i}", $i / 10);
   }
+  // 12 - 30, step 2
   @for $i from 1 through 10 {
     $step: 10 + $i * 2;
-    @include create-sizings("#{$step}", $step / 10);
+    @include create-spacings("#{$step}", $step / 10);
   }
 }
 
-@include create-all-sizings();
+// Creates classes like .overflow-x-hidden
+@include create-overflows();
+
+// Creates classes like .fs-08em
+@include create-font-sizes();
+
+// Creates classes like .m-00s and .px-22s
+@include create-all-spacings();
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 

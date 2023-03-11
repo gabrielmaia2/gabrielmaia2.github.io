@@ -13,34 +13,39 @@ const Preview = styled.img.attrs({ className: "w-100 h-100" })`
 
 const NoPreview = styled.div.attrs({ className: "w-100 h-100" })``;
 
-const Description = styled.div`
+const Description = styled.div.attrs({ className: "w-100" })`
   position: absolute;
-  width: 100%;
 `;
 
+const Title = styled.h3.attrs({ className: "p-2 m-0" })``;
+const Details = styled.div.attrs({ className: "p-2 pt-0" })``;
+
 const ProjectComp = styled.div.attrs({
-  className: "fs-08em",
-})<{ detailsHeight: number }>`
-  height: 40vh;
-  width: 100%;
-  position: relative;
+  className: "fs-08em w-100",
+})<{ height: string; detailsHeight: number }>`
+  height: ${({ height }) => height};
   overflow: hidden;
+  position: relative;
   filter: drop-shadow(0 0 0.1em #000000c3);
-  transition: filter ${transitionTime};
+  transition: filter ${transitionTime}, transform ${transitionTime};
+  transform: scale(1);
+  z-index: 1;
 
   ${Description} {
-    bottom: ${({ detailsHeight: height }) => -height}px;
-    background-color: ${bgDefault};
-    transition: background-color ${transitionTime}, bottom ${transitionTime};
+    bottom: ${({ detailsHeight }) => -detailsHeight}px;
+    background-color: ${bgHover};
+    transition: all ${transitionTime};
   }
 
   ${Preview}, ${NoPreview} {
     background-color: ${bgDefault};
-    transition: background-color ${transitionTime};
+    transition: all ${transitionTime};
   }
 
   &:hover {
     filter: drop-shadow(0 0 0.3em #000000c3);
+    transform: scale(1.03);
+    z-index: 2;
 
     ${Description} {
       bottom: 0px;
@@ -53,23 +58,27 @@ const ProjectComp = styled.div.attrs({
   }
 `;
 
-const Title = styled.h3.attrs({ className: "p-2 m-0" })``;
-const Details = styled.div.attrs({ className: "p-2 pt-0" })``;
+const Wrapper = styled.div`
+  padding: 1.5%;
+`;
 
 export default function Project({
   name,
   imgUrl,
+  height,
   children,
-}: PropsWithChildren<{ name: string; imgUrl?: string }>) {
-  const [detailsRef, { height }] = useElementSize();
+}: PropsWithChildren<{ name: string; imgUrl?: string; height: string }>) {
+  const [detailsRef, { height: detailsHeight }] = useElementSize();
 
   return (
-    <ProjectComp detailsHeight={height}>
-      {imgUrl ? <Preview src={imgUrl} alt={name} /> : <NoPreview />}
-      <Description>
-        <Title>{name}</Title>
-        <Details ref={detailsRef}>{children}</Details>
-      </Description>
-    </ProjectComp>
+    <Wrapper>
+      <ProjectComp height={height} detailsHeight={detailsHeight}>
+        {imgUrl ? <Preview src={imgUrl} alt={name} /> : <NoPreview />}
+        <Description>
+          <Title>{name}</Title>
+          <Details ref={detailsRef}>{children}</Details>
+        </Description>
+      </ProjectComp>
+    </Wrapper>
   );
 }
