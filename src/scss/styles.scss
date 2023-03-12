@@ -29,6 +29,41 @@ code {
   }
 }
 
+// Dropdown style
+
+.dropdown-toggle {
+  @extend .rounded-0, .border-0;
+}
+
+.dropdown,
+.dropdown-menu {
+  @extend .p-0, .rounded-0, .border-0, .shadow;
+}
+
+.dropdown-menu,
+.dropdown:not(.nav-item) {
+  background-color: base.$color-background-tertiary;
+}
+
+.dropdown .dropdown-toggle {
+  &:focus,
+  &:focus-visible,
+  &.show {
+    background-color: rgba(base.$color-foreground, 0.2) !important;
+  }
+}
+
+.dropdown-toggle,
+.dropdown-item {
+  @extend .link, .p-08s, .text-light;
+  @extend .fs-09em;
+
+  &.active,
+  &:active {
+    background-color: rgba(base.$color-foreground, 0.2) !important;
+  }
+}
+
 // Navbar style
 .navbar {
   @extend .px-3, .shadow-bold;
@@ -38,22 +73,12 @@ code {
     @extend .text-light;
   }
 
-  .dropdown-menu {
-    @extend .p-0, .rounded-0, .border-0, .shadow;
-    background-color: base.$color-background-tertiary;
-  }
-
-  .nav-link,
-  .dropdown-item {
+  .nav-link {
     @extend .link, .p-08s, .text-light;
 
     &[aria-current="page"] {
       @extend .fw-bold;
     }
-  }
-
-  .dropdown-item {
-    @extend .fs-09em;
   }
 
   // Collapsed navbar style

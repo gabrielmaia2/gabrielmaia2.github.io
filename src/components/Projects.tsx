@@ -68,26 +68,6 @@ export default function Projects({
     emblaApi?.reInit();
   }, [emblaApi, numSlides, panelHeight]);
 
-  // Turns other invisible
-  // useEffect(() => {
-  //   if (!emblaApi) return;
-  //   const cb = () => {
-  //     const nodes = emblaApi.slideNodes();
-
-  //     emblaApi.slidesInView().forEach((i) => {
-  //       nodes[i].style.visibility = "visible";
-  //       console.log(`visible ${i}`);
-  //     });
-  //     emblaApi.slidesNotInView().forEach((i) => {
-  //       nodes[i].style.visibility = "hidden";
-  //       console.log(`hidden ${i}`);
-  //     });
-  //   };
-
-  //   emblaApi.on("scroll", cb);
-  //   emblaApi.on("init", cb);
-  // }, [emblaApi]);
-
   useEffect(() => {
     if (!emblaApi) return;
     const cb = () => {
@@ -111,10 +91,16 @@ export default function Projects({
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   const projectsJSX = Object.entries(projects).map(
-    ([k, { name, imgUrl, element }]) => {
+    ([k, { name, tags, imgUrl, element }]) => {
       return (
         <Slide slideSize={`${100 / numSlides}%`}>
-          <Project key={k} name={name} imgUrl={imgUrl} height={panelHeight}>
+          <Project
+            key={k}
+            name={name}
+            tags={tags}
+            imgUrl={imgUrl}
+            height={panelHeight}
+          >
             {element}
           </Project>
         </Slide>

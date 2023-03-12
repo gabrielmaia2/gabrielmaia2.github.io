@@ -2,6 +2,7 @@ import React, { PropsWithChildren, useRef, useState, useEffect } from "react";
 import styled from "styled-components";
 import { useElementSize } from "usehooks-ts";
 import "../scss/styles.scss";
+import { RandomBadge, RandomBadgeContainer } from "./RandomBadge";
 
 const transitionTime = `0.3s`;
 const bgDefault = `rgba(0, 0, 0, 0.4)`;
@@ -64,11 +65,19 @@ const Wrapper = styled.div`
 
 export default function Project({
   name,
+  tags,
   imgUrl,
   height,
   children,
-}: PropsWithChildren<{ name: string; imgUrl?: string; height: string }>) {
+}: PropsWithChildren<{
+  name: string;
+  tags?: { name: string; category: string }[];
+  imgUrl?: string;
+  height: string;
+}>) {
   const [detailsRef, { height: detailsHeight }] = useElementSize();
+
+  const tagsJSX = tags?.map((t) => <RandomBadge>{t.name}</RandomBadge>);
 
   return (
     <Wrapper>
@@ -76,7 +85,12 @@ export default function Project({
         {imgUrl ? <Preview src={imgUrl} alt={name} /> : <NoPreview />}
         <Description>
           <Title>{name}</Title>
-          <Details ref={detailsRef}>{children}</Details>
+          <Details ref={detailsRef}>
+            <div className="mb-2">
+              <RandomBadgeContainer>{tagsJSX}</RandomBadgeContainer>
+            </div>
+            {children}
+          </Details>
         </Description>
       </ProjectComp>
     </Wrapper>

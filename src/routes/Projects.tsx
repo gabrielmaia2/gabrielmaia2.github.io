@@ -1,45 +1,50 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useCallback, useState } from "react";
 import Navbar from "../components/Navbar";
-import ContentAnimator from "../components/ContentAnimator";
-import projects from "../data/Projects";
+import ProjectsList from "./projects/ProjectsList";
+import ProjectsCarousel from "./projects/ProjectsCarousel";
+import { ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
+import styled from "styled-components";
 
-const Preview = styled.img`
-  object-fit: contain;
-  max-height: 50vh;
+const DropdownStyled = styled.div.attrs({ className: "m-0 d-inline-block" })`
+  position: relative;
+  width: 0%;
+  left: 3vw;
 `;
 
 export default function Projects() {
-  const projectsJSX = Object.entries(projects).map(
-    ([k, { name, imgUrl, element }], i) => {
-      const isEven = i % 2 === 0;
-      return (
-        // <ProjectItem key={k}>
-        //   <ProjectTitle>{name}</ProjectTitle>
-        //   <ProjectPreview src={imgUrl} alt={name} />
-        //   <ProjectDescription>{element}</ProjectDescription>
-        // </ProjectItem>
-        <ContentAnimator.Item key={k} reverse={!isEven}>
-          <ContentAnimator.Content side={isEven ? "left" : "right"}>
-            <Preview src={imgUrl} alt={name} />
-          </ContentAnimator.Content>
-          <ContentAnimator.Content
-            side={isEven ? "right" : "left"}
-            hasBackground
-          >
-            <h3 className="title">{name}</h3>
-            {element}
-          </ContentAnimator.Content>
-        </ContentAnimator.Item>
-      );
-    }
-  );
+  const [view, setView] = useState("list");
+
+  const onSelect = useCallback((k: string | null) => {
+    if (k) setView(k);
+  }, []);
 
   return (
     <div>
       <Navbar />
-      <h1 className="m-4 text-center">My projects</h1>
-      <ContentAnimator>{projectsJSX}</ContentAnimator>
+      <div className="mx-auto position-relative text-center">
+        <h1 className="m-4 d-inline-block">
+          My projects
+          <DropdownStyled>
+            <DropdownButton
+              as={ButtonGroup}
+              key="dark"
+              id={`dropdown-variants-dark`}
+              variant="dark"
+              title="View as:"
+              onSelect={onSelect}
+            >
+              <Dropdown.Item eventKey="list" active={view === "list"}>
+                List
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="carousel" active={view === "carousel"}>
+                Carousel
+              </Dropdown.Item>
+            </DropdownButton>
+          </DropdownStyled>
+        </h1>
+      </div>
+
+      {view === "list" ? <ProjectsList /> : <ProjectsCarousel />}
     </div>
   );
 }
