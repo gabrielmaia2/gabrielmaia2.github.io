@@ -26,7 +26,7 @@ const ProjectComp = styled.div.attrs({
   height: ${({ height }) => height};
   overflow: hidden;
   position: relative;
-  filter: drop-shadow(0 0 0.1em #000000c3);
+  box-shadow: 0 0 0.1em #000000c3;
   transition: filter ${transitionTime}, transform ${transitionTime};
   transform: scale(1);
   z-index: 1;
@@ -43,7 +43,7 @@ const ProjectComp = styled.div.attrs({
   }
 
   &:hover {
-    filter: drop-shadow(0 0 0.3em #000000c3);
+    box-shadow: 0 0 0.3em #000000c3;
     transform: scale(1.03);
     z-index: 2;
 
