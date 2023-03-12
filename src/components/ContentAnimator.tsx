@@ -76,6 +76,7 @@ const itemPadding = `2rem`;
 const ContentStyled = styled.div<{
   side: Side;
   hasBackground?: boolean;
+  isSingle?: boolean;
 }>`
   font-size: 1.4em;
   position: relative;
@@ -100,6 +101,25 @@ const ContentStyled = styled.div<{
       ${side === "left" ? fadeIn : fadeIn2}
         ${hasBackground ? css`, ${fadeInBackground}` : ``};
   `}
+  
+  ${({ isSingle, side }) =>
+    isSingle
+      ? css`
+          width: 60%;
+          max-width: 100%;
+          padding: ${itemPadding};
+
+          ${side === "left"
+            ? css`
+                margin-left: 5%;
+                margin-right: 35%;
+              `
+            : css`
+                margin-left: 35%;
+                margin-right: 5%;
+              `}
+        `
+      : ``}
 `;
 
 const ContentWrapper = styled.div`
@@ -159,32 +179,15 @@ const ItemStyled = styled.div<{
   }
 `;
 
-const SingleItemStyled = styled(ItemStyled)<{ reverse?: boolean }>`
-  width: 60%;
-
-  ${({ reverse }) =>
-    reverse
-      ? css`
-          margin-left: 35%;
-          margin-right: 5%;
-        `
-      : css`
-          margin-left: 5%;
-          margin-right: 35%;
-        `}
-`;
-
 const Item = ({
   reverse,
-  isContent,
   children,
-}: PropsWithChildren<{ reverse?: boolean; isContent?: boolean }>) => {
+}: PropsWithChildren<{ reverse?: boolean }>) => {
   const isSmallScreen = useMediaQuery("(max-width: 1000px)");
-  const ItemComp = isContent ? SingleItemStyled : ItemStyled;
 
   return (
     <ViewTransition
-      styledComponent={ItemComp}
+      styledComponent={ItemStyled}
       reverse={reverse}
       isSmallScreen={isSmallScreen}
     >

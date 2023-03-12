@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import About from "./About";
 
 const ProjectsContainer = styled.div.attrs({
   className: "d-flex flex-column align-items-stretch",
@@ -32,6 +33,7 @@ export default function Home() {
     <div className="">
       <Navbar />
       <h1 className="m-4 text-center">My portfolio</h1>
+      <About />
     </div>
   );
 }

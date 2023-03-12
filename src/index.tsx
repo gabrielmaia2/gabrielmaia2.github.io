@@ -30,7 +30,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
-    <div data-bs-theme="dark">
+    <div data-bs-theme="dark" className="h-100">
       <RouterProvider router={router} />
     </div>
   </React.StrictMode>
