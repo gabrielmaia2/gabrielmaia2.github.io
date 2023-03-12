@@ -2,8 +2,17 @@
 @use "base";
 
 html,
-body {
+body,
+#root {
   margin: 0;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+body > * {
+  flex-shrink: 0;
 }
 
 body {

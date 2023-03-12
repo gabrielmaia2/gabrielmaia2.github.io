@@ -11,6 +11,13 @@ const DropdownStyled = styled.div.attrs({ className: "m-0 d-inline-block" })`
   left: 3vw;
 `;
 
+const ProjectsCarouselStyled = styled.div.attrs({
+  className: "d-flex flex-column justify-content-center",
+})`
+  margin-top: auto;
+  margin-bottom: auto;
+`;
+
 export default function Projects() {
   const [view, setView] = useState("list");
 
@@ -19,7 +26,7 @@ export default function Projects() {
   }, []);
 
   return (
-    <div>
+    <div className="h-100 d-flex flex-column">
       <Navbar />
       <div className="mx-auto position-relative text-center">
         <h1 className="m-4 d-inline-block">
@@ -44,7 +51,13 @@ export default function Projects() {
         </h1>
       </div>
 
-      {view === "list" ? <ProjectsList /> : <ProjectsCarousel />}
+      {view === "list" ? (
+        <ProjectsList />
+      ) : (
+        <ProjectsCarouselStyled>
+          <ProjectsCarousel />
+        </ProjectsCarouselStyled>
+      )}
     </div>
   );
 }
