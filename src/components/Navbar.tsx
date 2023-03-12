@@ -1,20 +1,23 @@
 import React from "react";
 import { Navbar as NavbarBs, Nav, NavDropdown } from "react-bootstrap";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import NavbarLink from "./NavbarLink";
 
 export default function Navbar() {
   return (
     <NavbarBs variant="dark" expand="md">
-      <NavbarBs.Brand href="/">G. Maia</NavbarBs.Brand>
+      <NavbarBs.Brand as={Link} to="/">
+        G. Maia
+      </NavbarBs.Brand>
       <NavbarBs.Toggle aria-controls="responsive-navbar-nav">
         <GiHamburgerMenu className="fs-3" />
       </NavbarBs.Toggle>
       <NavbarBs.Collapse id="responsive-navbar-nav">
         <Nav>
-          <NavbarLink href="/">Home</NavbarLink>
+          <NavbarLink to="/">Home</NavbarLink>
           {/* <NavbarLink href="/about">About me</NavbarLink> */}
-          <NavbarLink href="/projects">Projects</NavbarLink>
+          <NavbarLink to="/projects">Projects</NavbarLink>
           <NavDropdown title="Resume">
             <NavDropdown.Item href="https://docs.google.com/document/d/1Immakb-vaPLkAzgL3AG0J4PgXJzN1Zlqx2QLAvdk4ik/edit?usp=sharing">
               Resume Fullstack (BR)

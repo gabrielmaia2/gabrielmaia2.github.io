@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import { Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 export default function NavbarLink({
@@ -17,7 +18,12 @@ export default function NavbarLink({
   }
 
   return (
-    <Nav.Link className={active} aria-current={ariaCurrent} {...props}>
+    <Nav.Link
+      as={Link}
+      className={active}
+      aria-current={ariaCurrent}
+      {...props}
+    >
       {children}
     </Nav.Link>
   );
