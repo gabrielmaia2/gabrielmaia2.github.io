@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, HashRouter, RouterProvider } from "react-router-dom";
 import "bootstrap";
 import reportWebVitals from "./reportWebVitals";
 import Home from "./routes/Home";
@@ -9,7 +9,7 @@ import About from "./routes/About";
 import Projects from "./routes/Projects";
 import "./scss/styles.scss";
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: "/",
     element: <Home />,
