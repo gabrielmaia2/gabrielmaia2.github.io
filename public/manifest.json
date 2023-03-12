@@ -1,6 +1,7 @@
 {
   "short_name": "Gabriel Maia",
-  "name": "Gabriel Maia Gondim Portfolio",
+  "name": "Gabriel Maia Gondim Website",
+  "description": "Just my website.",
   "icons": [
     {
       "src": "favicon.svg",
@@ -9,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#fff",
+  "background_color": "#000"
 }
