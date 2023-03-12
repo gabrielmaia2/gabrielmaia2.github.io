@@ -1,8 +1,11 @@
 import React from "react";
 import { useRouteError } from "react-router-dom";
+import { useDocumentTitle } from "usehooks-ts";
 import Navbar from "../components/Navbar";
 
 export default function Error() {
+  useDocumentTitle("Error");
+
   const error: any = useRouteError();
   console.error(error);
 

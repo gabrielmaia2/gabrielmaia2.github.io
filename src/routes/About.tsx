@@ -4,6 +4,7 @@ import ContentAnimator from "../components/ContentAnimator";
 import Navbar from "../components/Navbar";
 import ViewTransition from "../components/ViewTransition";
 import meImg from "../data/images/me.jpg";
+import useTitleCustom from "../hooks/useTitleCustom";
 
 const transitionTime = `2s`;
 
@@ -32,6 +33,8 @@ const ContentStyled = styled(ContentAnimator.Content)`
 const PStyled = styled.p.attrs({ className: "mb-1" })``;
 
 export default function About() {
+  // useTitleCustom("About");
+
   return (
     <div className="">
       <ContentAnimator.Item>

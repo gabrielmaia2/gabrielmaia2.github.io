@@ -4,6 +4,7 @@ import ProjectsList from "./projects/ProjectsList";
 import ProjectsCarousel from "./projects/ProjectsCarousel";
 import { ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import styled from "styled-components";
+import useTitleCustom from "../hooks/useTitleCustom";
 
 const DropdownStyled = styled.div.attrs({ className: "m-0 d-inline-block" })`
   position: relative;
@@ -19,6 +20,8 @@ const ProjectsCarouselStyled = styled.div.attrs({
 `;
 
 export default function Projects() {
+  useTitleCustom("Projects");
+
   const [view, setView] = useState("list");
 
   const onSelect = useCallback((k: string | null) => {

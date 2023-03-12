@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
+import useTitleCustom from "../hooks/useTitleCustom";
 import About from "./About";
 
 const ProjectsContainer = styled.div.attrs({
@@ -29,6 +30,8 @@ const ProjectPreview = styled.img`
 const ProjectDescription = styled.div``;
 
 export default function Home() {
+  useTitleCustom("Home");
+
   return (
     <div className="">
       <Navbar />
