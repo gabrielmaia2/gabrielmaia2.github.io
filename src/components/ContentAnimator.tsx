@@ -4,8 +4,8 @@ import { useMediaQuery } from "usehooks-ts";
 import ViewTransition from "./ViewTransition";
 
 type Side = "left" | "right";
-
 const bgColor = `rgb(19, 22, 27)`;
+const smallQuery = `(max-width: 1000px)`;
 
 const fadeIn = keyframes`
   0% {
@@ -78,10 +78,13 @@ const ContentStyled = styled.div<{
   hasBackground?: boolean;
   isSingle?: boolean;
 }>`
-  font-size: 1.4em;
   position: relative;
   max-width: 40%;
   margin: auto;
+
+  @media not ${smallQuery} {
+    font-size: 1.4em;
+  }
 
   animation-duration: 2s;
   animation-timing-function: ease-out;
@@ -132,30 +135,42 @@ const ItemStyled = styled.div<{
   isSmallScreen?: boolean;
 }>`
   box-sizing: border-box;
-  padding: 5vw;
+  margin: 5vw;
 
-  ${ContentWrapper} {
-    ${({ isSmallScreen, reverse }) =>
-      isSmallScreen
-        ? css`
+  ${({ isSmallScreen, reverse }) =>
+    isSmallScreen
+      ? css`
+          margin: 2rem;
+
+          ${ContentWrapper} {
             flex-direction: column;
             align-items: stretch;
+            padding: ${itemPadding};
 
             ${ContentStyled} {
               width: auto;
               height: auto;
               max-width: none;
               max-height: none;
-              padding: ${itemPadding};
+              margin: 0;
+              padding: 0;
+
+              &:not(:last-child) {
+                padding-bottom: ${itemPadding};
+              }
             }
-          `
-        : css`
+          }
+        `
+      : css`
+          ${ContentWrapper} {
             justify-content: space-between;
             align-items: center;
 
             flex-direction: ${reverse ? `row-reverse` : `row`};
-          `}
+          }
+        `}
 
+  ${ContentWrapper} {
     ${({ visible, isSmallScreen }) =>
       visible && isSmallScreen
         ? css`
@@ -169,13 +184,21 @@ const ItemStyled = styled.div<{
   }
 
   ${ContentStyled} {
-    ${({ visible, isSmallScreen }) =>
-      visible && !isSmallScreen
-        ? css``
+    ${({ visible, isSmallScreen }) => css`
+      ${(!visible || isSmallScreen) &&
+      css`
+        animation-name: none;
+        background: transparent;
+      `}
+      ${visible
+        ? isSmallScreen &&
+          css`
+            left: auto;
+          `
         : css`
-            animation-name: none;
-            background: transparent;
+            left: -100vw;
           `}
+    `}
   }
 `;
 
@@ -183,7 +206,7 @@ const Item = ({
   reverse,
   children,
 }: PropsWithChildren<{ reverse?: boolean }>) => {
-  const isSmallScreen = useMediaQuery("(max-width: 1000px)");
+  const isSmallScreen = useMediaQuery(smallQuery);
 
   return (
     <ViewTransition
