@@ -9,7 +9,6 @@ const RandomBadgeStyled = styled(Badge)<{ value: number }>`
 
 function RandomBadge({ children }: PropsWithChildren<{}>) {
   const value = Math.floor(Math.random() * 360);
-  console.log(value);
   return <RandomBadgeStyled value={value}>{children}</RandomBadgeStyled>;
 }
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import styled, { css } from "styled-components";
 import Project from "../components/Project";
@@ -67,25 +67,6 @@ export default function Projects({
   useEffect(() => {
     emblaApi?.reInit();
   }, [emblaApi, numSlides, panelHeight]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const cb = () => {
-      const nodes = emblaApi.slideNodes();
-
-      emblaApi.slidesInView().forEach((i) => {
-        nodes[i].style.visibility = "visible";
-        console.log(`visible ${i}`);
-      });
-      emblaApi.slidesNotInView().forEach((i) => {
-        nodes[i].style.visibility = "hidden";
-        console.log(`hidden ${i}`);
-      });
-    };
-
-    emblaApi.on("scroll", cb);
-    emblaApi.on("init", cb);
-  }, [emblaApi]);
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);

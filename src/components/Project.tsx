@@ -1,4 +1,4 @@
-import React, { PropsWithChildren, useRef, useState, useEffect } from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 import { useElementSize } from "usehooks-ts";
 import "../scss/styles.scss";

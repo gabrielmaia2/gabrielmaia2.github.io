@@ -1,25 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import ContentAnimator from "../components/ContentAnimator";
-import Navbar from "../components/Navbar";
-import ViewTransition from "../components/ViewTransition";
 import meImg from "../data/images/me.jpg";
-import useTitleCustom from "../hooks/useTitleCustom";
-
-const transitionTime = `2s`;
-
-const ContentLeft = styled.div<{ visible: boolean }>`
-  width: 600px;
-  transition: all ${transitionTime};
-  ${({ visible }) =>
-    visible
-      ? css`
-          box-shadow: 0 0 0.3em #000000c3;
-        `
-      : css`
-          box-shadow: 0 0 0.1em #000000c3;
-        `}
-`;
 
 const Image = styled.img`
   object-fit: contain;
