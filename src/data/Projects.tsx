@@ -5,6 +5,7 @@ import newHomeImg from "./images/new-home.jpeg";
 import notesAppImg from "./images/notes-app.png";
 import pistoleiroPacoImg from "./images/pistoleiro-paco.png";
 import snakesLaddersImg from "./images/snakes-ladders.png";
+import myWebsiteImg from "./images/my-website.png";
 
 const projects: Record<string, ProjectType> = {
   bellApp: {
@@ -41,7 +42,7 @@ const projects: Record<string, ProjectType> = {
       { name: "Express", category: "Frameworks/Libraries" },
       { name: "Firebase", category: "Database" },
       { name: "MongoDB", category: "Database" },
-      { name: "JSX", category: "Languages" },
+      { name: "JS/JSX", category: "Languages" },
       { name: "CSS", category: "Styling" },
     ],
     imgUrl: notesAppImg,
@@ -156,6 +157,25 @@ const projects: Record<string, ProjectType> = {
         <p className="m-0">
           Snakes and Ladders game implementation using Java Swing and AWT.
         </p>
+      </div>
+    ),
+  },
+  myWebsite: {
+    name: "This website",
+    tags: [
+      { name: "React", category: "Frameworks/Libraries" },
+      { name: "TS/JSX", category: "Languages" },
+      { name: "Sass", category: "Styling" },
+      { name: "Styled Components", category: "Styling" },
+    ],
+    imgUrl: myWebsiteImg,
+    element: (
+      <div>
+        <p className="mb-2">
+          <a href="https://gabrielmaia2.github.io">gabrielmaia2.github.io</a>
+        </p>
+        <p className="mb-2">This is just my website.</p>
+        <p className="m-0">I built it using React and Typescript.</p>
       </div>
     ),
   },
