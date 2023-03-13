@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import "variables";
 @import "../../node_modules/bootstrap/scss/maps";
 @import "../../node_modules/bootstrap/scss/mixins";
@@ -70,12 +72,12 @@ $utilities: map-merge(
 @mixin create-all-spacings() {
   // 0 - 10, step 1
   @for $i from 0 through 10 {
-    @include create-spacings("0#{$i}", $i / 10);
+    @include create-spacings("0#{$i}", math.div($i, 10));
   }
   // 12 - 30, step 2
   @for $i from 1 through 10 {
     $step: 10 + $i * 2;
-    @include create-spacings("#{$step}", $step / 10);
+    @include create-spacings("#{$step}", math.div($step, 10));
   }
 }
 
