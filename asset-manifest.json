@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.e965013a.css",
+    "main.css": "/static/css/main.168a9c88.css",
     "main.js": "/static/js/main.b6a49fc2.js",
     "static/js/787.888f0937.chunk.js": "/static/js/787.888f0937.chunk.js",
     "static/media/pistoleiro-paco.png": "/static/media/pistoleiro-paco.5e5dd4d3ac47b96f6b76.png",
@@ -12,12 +12,12 @@
     "static/media/new-home.jpeg": "/static/media/new-home.d9c1b8418e2e4124a811.jpeg",
     "static/media/snakes-ladders.png": "/static/media/snakes-ladders.b972c792bfd46942fe9e.png",
     "index.html": "/index.html",
-    "main.e965013a.css.map": "/static/css/main.e965013a.css.map",
+    "main.168a9c88.css.map": "/static/css/main.168a9c88.css.map",
     "main.b6a49fc2.js.map": "/static/js/main.b6a49fc2.js.map",
     "787.888f0937.chunk.js.map": "/static/js/787.888f0937.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e965013a.css",
+    "static/css/main.168a9c88.css",
     "static/js/main.b6a49fc2.js"
   ]
 }
