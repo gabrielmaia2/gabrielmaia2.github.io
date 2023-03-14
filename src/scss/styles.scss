@@ -40,36 +40,33 @@ code {
 
 // Dropdown style
 
-.dropdown-toggle {
-  @extend .rounded-0, .border-0;
-}
-
 .dropdown,
 .dropdown-menu {
   @extend .p-0, .rounded-0, .border-0, .shadow;
-}
 
-.dropdown-menu,
-.dropdown {
   background-color: base.$color-background-tertiary;
 }
 
-.dropdown .dropdown-toggle {
-  &:focus,
-  &:focus-visible,
-  &.show {
-    background-color: rgba(base.$color-foreground, 0.2) !important;
+.dropdown {
+  .dropdown-toggle {
+    @extend .rounded-0, .border-0;
   }
-}
 
-.dropdown-toggle,
-.dropdown-item {
-  @extend .link, .p-08s, .text-light;
-  @extend .fs-09em;
+  .dropdown-item {
+    @extend .fs-09em;
+  }
 
-  &.active,
-  &:active {
-    background-color: rgba(base.$color-foreground, 0.2) !important;
+  .dropdown-toggle,
+  .dropdown-item {
+    @extend .link, .p-08s, .text-light;
+
+    &.show,
+    &.active,
+    &:focus,
+    &:focus-visible,
+    &:active {
+      background-color: rgba(base.$color-foreground, 0.2) !important;
+    }
   }
 }
 
