@@ -1,6 +1,8 @@
 @forward "base";
 @use "base";
 
+// Root
+
 html,
 body,
 #root {
@@ -38,7 +40,7 @@ code {
   }
 }
 
-// Dropdown style
+// Dropdown
 
 .dropdown,
 .dropdown-menu {
@@ -70,7 +72,8 @@ code {
   }
 }
 
-// Navbar style
+// Navbar
+
 .navbar {
   @extend .px-3, .shadow-bold;
   background-color: base.$color-background-secondary;
@@ -87,7 +90,7 @@ code {
     }
   }
 
-  // Collapsed navbar style
+  // Collapsed style
 
   .navbar-toggler {
     @extend .border-0, .shadow-none, .link;
@@ -102,6 +105,8 @@ code {
     }
   }
 }
+
+// Link
 
 a {
   color: #8ad0f1;
@@ -126,6 +131,8 @@ a {
     color: unset;
   }
 }
+
+// Print
 
 @media print {
   body * {
