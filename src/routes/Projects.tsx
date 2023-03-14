@@ -6,12 +6,15 @@ import { ButtonGroup, Dropdown, DropdownButton } from "react-bootstrap";
 import styled, { css } from "styled-components";
 import useTitleCustom from "../hooks/useTitleCustom";
 import { useMediaQuery } from "usehooks-ts";
+import TagsFilter from "../components/TagsFilter";
+import projects from "../data/Projects";
 
 const DropdownStyled = styled.div<{
   isSmall: boolean;
 }>`
   margin: 0;
-  display: inline-block;
+  display: inline-flex;
+  vertical-align: middle;
 
   ${({ isSmall }) =>
     isSmall
@@ -21,6 +24,11 @@ const DropdownStyled = styled.div<{
           width: 0%;
           left: 3vw;
         `}
+`;
+
+const DropdownWrapper = styled.div`
+  display: inline-flex;
+  justify-content: space-around;
 `;
 
 const Title = styled.h1<{
@@ -56,7 +64,7 @@ const ProjectsCarouselStyled = styled.div.attrs({
 
 export default function Projects() {
   useTitleCustom("Projects");
-  const isSmallScreen = useMediaQuery("(max-width: 500px)");
+  const isSmallScreen = useMediaQuery("(max-width: 720px)");
 
   const [view, setView] = useState("list");
 
@@ -64,27 +72,35 @@ export default function Projects() {
     if (k) setView(k);
   }, []);
 
+  const projectsList = Object.entries(projects).map(([_, p]) => p);
+
   return (
     <div className="h-100 d-flex flex-column">
       <Navbar />
       <Title isSmall={isSmallScreen}>
         My projects
         <DropdownStyled isSmall={isSmallScreen}>
-          <DropdownButton
-            as={ButtonGroup}
-            key="dark"
-            id={`dropdown-variants-dark`}
-            variant="dark"
-            title="View as:"
-            onSelect={onSelect}
-          >
-            <Dropdown.Item eventKey="list" active={view === "list"}>
-              List
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="carousel" active={view === "carousel"}>
-              Carousel
-            </Dropdown.Item>
-          </DropdownButton>
+          <DropdownWrapper>
+            <DropdownButton
+              as={ButtonGroup}
+              variant="dark"
+              title="View as:"
+              onSelect={onSelect}
+              className="me-3"
+            >
+              <Dropdown.Item eventKey="list" active={view === "list"}>
+                List
+              </Dropdown.Item>
+              <Dropdown.Item eventKey="carousel" active={view === "carousel"}>
+                Carousel
+              </Dropdown.Item>
+            </DropdownButton>
+            <TagsFilter
+              title="Filter"
+              items={projectsList}
+              storageKey="projectTags"
+            />
+          </DropdownWrapper>
         </DropdownStyled>
       </Title>
 

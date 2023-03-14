@@ -1,6 +1,8 @@
+import Tag from "./Tag";
+
 type Project = {
   name: string;
-  tags?: { name: string; category: string }[];
+  tags?: Tag[];
   imgUrl?: string;
   element: JSX.Element;
 };

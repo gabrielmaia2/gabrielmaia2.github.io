@@ -54,22 +54,22 @@ code {
   background-color: base.$color-background-tertiary;
 }
 
-.dropdown .dropdown-toggle {
-  &:focus,
-  &:focus-visible,
-  &.show {
-    background-color: rgba(base.$color-foreground, 0.2) !important;
-  }
-}
+.dropdown {
+  .dropdown-toggle,
+  .dropdown-item {
+    @extend .link, .p-08s, .text-light;
+    // @extend .fs-09em;
 
-.dropdown-toggle,
-.dropdown-item {
-  @extend .link, .p-08s, .text-light;
-  @extend .fs-09em;
+    // &:focus,
+    // &:focus-visible,
+    &.show {
+      background-color: rgba(base.$color-foreground, 0.2) !important;
+    }
 
-  &.active,
-  &:active {
-    background-color: rgba(base.$color-foreground, 0.2) !important;
+    // &:active,
+    &.active {
+      background-color: rgba(base.$color-foreground, 0.2) !important;
+    }
   }
 }
 

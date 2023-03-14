@@ -10,7 +10,7 @@ const projects: Record<string, ProjectType> = {
   bellApp: {
     name: "Bell",
     tags: [
-      { name: "Clean", category: "Architecture" },
+      { name: "Clean", category: "Architectures" },
       { name: "ASP.NET Core", category: "Frameworks/Libraries" },
       { name: "EF Core", category: "Frameworks/Libraries" },
       { name: "SQLite", category: "Database" },
@@ -66,10 +66,10 @@ const projects: Record<string, ProjectType> = {
   newHome: {
     name: "New Home",
     tags: [
-      { name: "Clean", category: "Architecture" },
+      { name: "Clean", category: "Architectures" },
       { name: "Android Native", category: "Frameworks/Libraries" },
       { name: "Firebase", category: "Frameworks/Libraries" },
-      { name: "Jenkins", category: "CI/CD" },
+      { name: "Jenkins", category: "Other" },
       { name: "MockK", category: "Testing" },
       { name: "Kotlin", category: "Languages" },
       { name: "Android XML", category: "Languages" },
