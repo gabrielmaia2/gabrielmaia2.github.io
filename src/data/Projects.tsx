@@ -6,8 +6,54 @@ import notesAppImg from "./images/notes-app.png";
 import pistoleiroPacoImg from "./images/pistoleiro-paco.png";
 import snakesLaddersImg from "./images/snakes-ladders.png";
 import myWebsiteImg from "./images/my-website.png";
+import mlListsImg from "./images/ml-lists.png";
+import stockImg from "./images/stock.png";
 
 const projects: Record<string, ProjectType> = {
+  trabML: {
+    name: "Stock Price Prediction Model",
+    tags: [
+      { name: "Neural Networks", category: "ML" },
+      { name: "Pandas", category: "ML" },
+      { name: "Numpy", category: "ML" },
+      { name: "TensorFlow", category: "ML" },
+      { name: "Python", category: "Languages" },
+      { name: "LSTM", category: "ML" },
+    ],
+    imgUrl: stockImg,
+    element: (
+      <div>
+        <p className="mb-2">
+          <a href="https://github.com/gabrielmaia2/trabalho-ml2023/">
+            github.com/gabrielmaia2/trabalho-ml2023/
+          </a>
+        </p>
+        <p className="m-0">Training LSTM model to predict stock prices.</p>
+      </div>
+    ),
+  },
+  mlAssignments: {
+    name: "Machine Learning Assignments",
+    tags: [
+      { name: "Neural Networks", category: "ML" },
+      { name: "Pandas", category: "ML" },
+      { name: "Numpy", category: "ML" },
+      { name: "Scikit-Learn", category: "ML" },
+      { name: "TensorFlow", category: "ML" },
+      { name: "Python", category: "Languages" },
+    ],
+    imgUrl: mlListsImg,
+    element: (
+      <div>
+        <p className="mb-2">
+          <a href="https://github.com/gabrielmaia2/ml2023-GabrielMaiaGondim/">
+            github.com/gabrielmaia2/ml2023-GabrielMaiaGondim/
+          </a>
+        </p>
+        <p className="m-0">Assignments from ML class.</p>
+      </div>
+    ),
+  },
   bellApp: {
     name: "Bell",
     tags: [
