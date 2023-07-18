@@ -1,4 +1,5 @@
 import React from "react";
+import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import ContentAnimator from "../components/ContentAnimator";
 import meImg from "../data/images/me.jpg";
@@ -19,6 +20,8 @@ export default function About() {
 
   return (
     <div className="">
+      <Navbar />
+      <h1 className="m-4 text-center">About me</h1>
       <ContentAnimator.Item>
         <ContentAnimator.Content side="left">
           <Image src={meImg} alt="Gabriel Maia" />
@@ -47,30 +50,23 @@ export default function About() {
       <ContentAnimator.Item reverse>
         <ContentAnimator.Content side="left" hasBackground isSingle>
           <p>
-            I am looking for a position as a developer in the software industry.
-            I don't have professional experience (yet), but I am highly
-            flexible, I can learn pretty fast and also know how to develop a lot
-            of things, be it in front-end, back-end, database or even games.
+            I am looking for a position as a data scientist in the industry. I
+            don't have professional experience (yet), but I am highly flexible
+            and can learn pretty fast. I've worked on some projects, you can
+            check them out in the "Projects" tab.
           </p>
         </ContentAnimator.Content>
       </ContentAnimator.Item>
       <ContentAnimator.Item>
         <ContentAnimator.Content side="right" hasBackground isSingle>
           <p>
-            I love to learn and to create new things. I am the productive type
-            (that can't stand much without doing something).
+            I love to learn and create new things, always loved since I was
+            young. I am the productive type (that can't stand much without doing
+            something).
           </p>
           <p>
             I love studying many things, from software to math, physics or
             phylosophy.
-          </p>
-        </ContentAnimator.Content>
-      </ContentAnimator.Item>
-      <ContentAnimator.Item reverse>
-        <ContentAnimator.Content side="left" hasBackground isSingle>
-          <p>
-            Look at my projects in the navigation bar, I put some cool projects
-            there just for you &lt;3.
           </p>
         </ContentAnimator.Content>
       </ContentAnimator.Item>

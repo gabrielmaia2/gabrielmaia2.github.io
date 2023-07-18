@@ -8,8 +8,8 @@ export default function Home() {
 
   return (
     <div className="">
-      <Navbar />
-      <h1 className="m-4 text-center">My portfolio</h1>
+      {/* <Navbar />
+      <h1 className="m-4 text-center">My portfolio</h1> */}
       <About />
     </div>
   );
