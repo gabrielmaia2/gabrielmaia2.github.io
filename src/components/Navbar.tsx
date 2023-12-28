@@ -24,14 +24,14 @@ export default function Navbar() {
           {/* <NavbarLink href="/about">About me</NavbarLink> */}
           <NavbarLink to="/projects">Projects</NavbarLink>
           <NavDropdownStyled title="Resume">
+            <NavDropdown.Item href="https://docs.google.com/document/d/1BtQ4oV7jqcYAEBiAWfm6mVe8XYmu20d08QIovcF6g4M/edit?usp=sharing">
+              Resume Machine Learning and Data Science (BR)
+            </NavDropdown.Item>
             <NavDropdown.Item href="https://docs.google.com/document/d/1Immakb-vaPLkAzgL3AG0J4PgXJzN1Zlqx2QLAvdk4ik/edit?usp=sharing">
-              Resume Fullstack (BR)
+              Resume Full Stack (BR)
             </NavDropdown.Item>
             <NavDropdown.Item href="https://docs.google.com/document/d/1VzsAqEb69s6P6KJvYn52qe7NJR4F0BYTdJnl_-58a7U/edit?usp=sharing">
-              Resume GameDev (BR)
-            </NavDropdown.Item>
-            <NavDropdown.Item href="https://docs.google.com/document/d/1BtQ4oV7jqcYAEBiAWfm6mVe8XYmu20d08QIovcF6g4M/edit?usp=sharing">
-              Resume ML DS (BR)
+              Resume Game Development (BR)
             </NavDropdown.Item>
           </NavDropdownStyled>
         </Nav>
