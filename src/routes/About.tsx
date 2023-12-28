@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import ContentAnimator from "../components/ContentAnimator";
 import meImg from "../data/images/me.jpg";
+import axios from "axios";
 
 const Image = styled.img`
   object-fit: contain;
@@ -15,8 +16,21 @@ const ContentStyled = styled(ContentAnimator.Content)`
 
 const PStyled = styled.p.attrs({ className: "mb-1" })``;
 
+function CatPic() {}
+
 export default function About() {
   // useTitleCustom("About");
+  const [catSrc, setCatSrc] = useState("");
+
+  useEffect(() => {
+    (async () => {
+      let { data } = await axios.get(
+        "https://api.thecatapi.com/v1/images/search"
+      );
+
+      setCatSrc(data[0].url);
+    })();
+  }, []);
 
   return (
     <div className="">
@@ -50,24 +64,28 @@ export default function About() {
       <ContentAnimator.Item reverse>
         <ContentAnimator.Content side="left" hasBackground isSingle>
           <p>
-            I am looking for a position as a data scientist in the industry. I
-            don't have professional experience (yet), but I am highly flexible
-            and can learn pretty fast. I've worked on some projects, you can
-            check them out in the "Projects" tab.
+            A skillful software engineer with knowledge in software development,
+            computer science, machine learning and circuits.
           </p>
         </ContentAnimator.Content>
       </ContentAnimator.Item>
       <ContentAnimator.Item>
         <ContentAnimator.Content side="right" hasBackground isSingle>
           <p>
-            I love to learn and create new things, always loved since I was
-            young. I am the productive type (that can't stand much without doing
-            something).
+            Some things I like: CS, Software, Math, Physics, ML, Phylosophy,
+            Robotics and Piano.
           </p>
+        </ContentAnimator.Content>
+      </ContentAnimator.Item>
+      <ContentAnimator.Item>
+        <ContentStyled side="left" hasBackground>
           <p>
-            I love studying many things, from software to math, physics or
-            phylosophy.
+            I also like cats. <br />
+            Check out this random cat pic:
           </p>
+        </ContentStyled>
+        <ContentAnimator.Content side="right">
+          <Image src={catSrc} alt="Cute cat" />
         </ContentAnimator.Content>
       </ContentAnimator.Item>
     </div>

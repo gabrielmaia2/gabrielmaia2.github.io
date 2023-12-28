@@ -14,6 +14,7 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.26",
+    "axios": "^1.6.3",
     "bootstrap": "^5.2.3",
     "embla-carousel-react": "^7.1.0",
     "react": "^18.2.0",
